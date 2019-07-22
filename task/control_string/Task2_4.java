@@ -4,7 +4,7 @@ package control_string;
 // https://atcoder.jp/contests/abc044/tasks/abc044_b
 
 public class Task2_4 {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         String str = "ababbcca";
         char[] character = str.toCharArray();
 

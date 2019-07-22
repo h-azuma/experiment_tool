@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Task1_2 {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         List<Integer> list = Arrays.asList(3, 5, 2, 7, 4);
         int num = 18;
 
@@ -17,9 +17,9 @@ public class Task1_2 {
 
         int sum = 0;
 
-        for(int i = 0; i < binArray.length; i++){
+        for (int i = 0; i < binArray.length; i++) {
             int digit = Integer.parseInt(binArray[i]);
-            if(digit == 1){
+            if (digit == 1) {
                 // add factor of list
                 sum += list.get(i);
             }

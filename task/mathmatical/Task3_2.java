@@ -4,7 +4,7 @@ package mathmatical;
 // https://atcoder.jp/contests/abc006/tasks/abc006_3
 
 public class Task3_2 {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         int sum = 10;
         int legs = 36;
 
@@ -12,7 +12,7 @@ public class Task3_2 {
         int turtle = sum;
 
         // crane has 2 legs and turtle has 4 legs
-        while(!(2 * crane + 4 * turtle == legs && crane + turtle == sum)){
+        while (!(2 * crane + 4 * turtle == legs && crane + turtle == sum)) {
             // Reduce turtle number and add crane number
             crane++;
             turtle--;

@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Task4_3 {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         String day = "sat";
         List<Integer> candidate = new ArrayList<>();
 
         // 1st is Wednesday
         int start = 1;
-        switch(day){
+        switch (day) {
             case "mon":
                 start += 5;
                 break;
@@ -34,7 +34,7 @@ public class Task4_3 {
                 break;
         }
 
-        for(int i = start; i <= 31; i += 7){
+        for (int i = start; i <= 31; i += 7) {
             candidate.add(i);
         }
         System.out.println(candidate.get(candidate.size() - 2));

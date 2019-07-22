@@ -4,7 +4,7 @@ package mathmatical;
 // https://atcoder.jp/contests/abc006/tasks/abc006_2
 
 public class Task3_1 {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         // followings are initial numbers
         int a1 = 0;
         int a2 = 0;
@@ -14,10 +14,10 @@ public class Task3_1 {
         int tmp;
         int an = 0;
 
-        for(int i = 0; i < 5; i++){
+        for (int i = 0; i < 5; i++) {
             tmp = a1 + a2 + a3;
 
-            if(i + 1 >= 5){
+            if (i + 1 >= 5) {
                 an = tmp;
                 break;
             }

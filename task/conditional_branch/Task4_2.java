@@ -1,7 +1,7 @@
 package conditional_branch;
 
 public class Task4_2 {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         // input current time and season
         String time = "0628PM";
         String season = "su";
@@ -9,13 +9,13 @@ public class Task4_2 {
         int hour = Integer.parseInt(time.substring(0, 2));
 
         // change hour into 24-hour clock
-        if(time.charAt(4) == 'P'){
+        if (time.charAt(4) == 'P') {
             hour += 12;
         }
 
         int dayThreshold = 0;
         int nightThreshold = 0;
-        switch(season){
+        switch (season) {
             case "sp":
             case "au":
                 dayThreshold = 6;
@@ -31,9 +31,9 @@ public class Task4_2 {
                 break;
         }
 
-        if(hour < dayThreshold || nightThreshold <= hour){
+        if (hour < dayThreshold || nightThreshold <= hour) {
             System.out.println("night");
-        }else{
+        } else {
             System.out.println("daytime");
         }
     }

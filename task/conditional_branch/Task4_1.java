@@ -1,7 +1,7 @@
 package conditional_branch;
 
 public class Task4_1 {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         String birthday = "4/8";
 
         // split birthday into moth and day
@@ -10,7 +10,7 @@ public class Task4_1 {
         String stone = "";
 
         // select the birthstone
-        switch(month){
+        switch (month) {
             case 1:
                 stone = "garnet";
                 break;

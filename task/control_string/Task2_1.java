@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Task2_1 {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         String str = "amkllannsnom";
 
         // store the character of the string one by one
@@ -17,7 +17,7 @@ public class Task2_1 {
         stringList.removeIf(s -> s.matches("l|m|n"));
 
         // output the remained string
-        for(int i = stringList.size() - 1; i >= 0; i--){
+        for (int i = stringList.size() - 1; i >= 0; i--) {
             System.out.print(stringList.get(i));
         }
     }

@@ -7,7 +7,7 @@ function deleteCode(){
 
 function getCode(){
     let setName = document.getElementById("taskSet");
-    let num1 = setName.selectedIndex;
+    let num1 = setName.selectedIndex + 1;
     let str1 = setName.options[num1].value;
 
     let taskNum = document.getElementById("task");
@@ -27,5 +27,6 @@ function showClock1() {
 }
 
 function stopTimer(){
-  clearInterval(timer);
+  window.alert('hogehoge')
+  window.clearInterval(timer);
 }
