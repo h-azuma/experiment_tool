@@ -20,5 +20,49 @@ body {
 }
 
 code {
-  width:100%:
+  width:100%;
+}
+
+#taskSet {
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+#task {
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+#highlight {
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+#font {
+    width: 100%;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+#buttonWrapper {
+    text-align:center;
+}
+
+#showButton {
+    width: 30%;
+    height: 3%;
+    margin-top: 10px;
+}
+
+#stopButton {
+    width: 5%;
+    height: 3%;
+    margin-left: 5px;
 }

@@ -1,8 +1,10 @@
 var timer;
+var showFlg = 0;
 
 function deleteCode() {
     let code = document.getElementById("preview");
     code.innerText = "";
+    showFlg = 0;
 }
 
 function getCode(){
@@ -14,9 +16,20 @@ function getCode(){
     let num = taskNum.selectedIndex;
     let str2 = taskNum.options[num].value;
 
-    let filePath = "file:///C:/msys64/home/azhid/experiment_tool/task/" + setName + "/Task" + taskSetNum + "_" + str2 + ".java";
-    timer = setInterval('showClock()',1000);
+    let filePath = "task/" + setName + "/Task" + taskSetNum + "_" + str2 + ".java";
+    
+    if(showFlg == 0){
+        timer = setInterval('showClock()',1000);
+        showFlg++;
+    }
+    
     console.log(filePath);
+    fetch(filePath)
+    .then((response) => response.text())
+    .then((text) => {
+        document.getElementById("preview").innerText = text;
+    })
+    .catch((error) => console.log(error));
 }
 
 function showClock() {
@@ -50,4 +63,5 @@ function stopTimer(){
     window.clearInterval(timer);
     window.alert(document.getElementById("minute").innerHTML + ':' + document.getElementById("second").innerHTML);
     resetClock();
+    
 }
