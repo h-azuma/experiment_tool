@@ -30,6 +30,7 @@ function getCode(){
         document.getElementById("preview").innerText = text;
     })
     .catch((error) => console.log(error));
+    hljs.highlightBlock(document.getElementById("preview"))
 }
 
 function showClock() {
