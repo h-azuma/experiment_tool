@@ -2,7 +2,7 @@
 <head>
 <meta charset="utf-8"/>
 <title>Tool</title>
-<link rel="stylesheet" href="lib/styles/default.css">
+<link rel="stylesheet" href="lib/styles/vs.css" id="style">
 <script src="lib/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 <script src="./function.js"></script>
@@ -24,13 +24,13 @@
 <option value=6>タスク6</option>
 <option value=7>タスク7</option>
 </select>
-<select id="highlight" onChange()="changeHighlight()">
+<select id="highlight">
 <option value="fullHighlight">フルハイライト</option>
 <option value="preserved">予約語ハイライト</option>
 <option value="gray">ハイライトなし</option>
 <option value="random">ランダムハイライト</option>
 </select>
-<select id="font" onChange="changeFont()">
+<select id="font">
 <option value="nonPropotional">等幅フォント</option>
 <option value="propotional">非等幅フォント</option>
 <option value="kawaii">Kawaii</option>

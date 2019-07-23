@@ -26,11 +26,11 @@ function getCode(){
     console.log(filePath);
     fetch(filePath)
     .then((response) => response.text())
-    .then((text) => {
-        document.getElementById("preview").innerText = text;
-    })
+    .then((text) => document.getElementById("preview").innerText = text)
+    .then(() => changeHighlight())
+    .then(() => changeFont())
     .catch((error) => console.log(error));
-    hljs.highlightBlock(document.getElementById("preview"))
+    
 }
 
 function showClock() {
@@ -73,11 +73,14 @@ function changeFont(){
     let fontNum = font.selectedIndex;
     
     if(fontNum == 0){
+        // non propotional font
         code.style.fontFamily = "Courier";
     }else if(fontNum == 1){
-        code.style.fontFamily = "arial"
+        // propotional font
+        code.style.fontFamily = "arial";
     }else if(fontNum == 2){
-        code.style.fontFamily = "DS-dada";
+        // kawaii font
+        code.style.fontFamily = "Mv Boli";
     }
 }
 
@@ -86,10 +89,17 @@ function changeHighlight(){
     let highlightNum = highlight.selectedIndex;
     
     if(highlightNum == 0){
-        hljs.initHighlighting();
+        // full highlight
+        document.getElementById("style").href = "lib/styles/vs.css"
+        document.getElementById("preview").innerHTML = hljs.highlight("java", document.getElementById("preview").innerText).value;
     }else if(highlightNum == 1){
-        
+        // preserved word highlight
+        document.getElementById("style").href = "lib/styles/ascetic.css"
+        document.getElementById("preview").innerHTML = hljs.highlight("java", document.getElementById("preview").innerText).value;
+    }else if(highlightNum == 2){
+        // gray
+        // do nothing
     }else if(highlightNum == 3){
-        
+        // random highlight
     }
 }
