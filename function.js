@@ -23,11 +23,10 @@ function getCode(){
         showFlg++;
     }
     
-    console.log(filePath);
+    // console.log(filePath);
     fetch(filePath)
     .then((response) => response.text())
-    .then((text) => document.getElementById("preview").innerText = text)
-    .then(() => changeHighlight())
+    .then((text) => changeHighlight(text))
     .then(() => changeFont())
     .catch((error) => console.log(error));
     
@@ -84,22 +83,38 @@ function changeFont(){
     }
 }
 
-function changeHighlight(){
+function changeHighlight(text){
     let highlight = document.getElementById("highlight");
     let highlightNum = highlight.selectedIndex;
     
     if(highlightNum == 0){
         // full highlight
         document.getElementById("style").href = "lib/styles/vs.css"
-        document.getElementById("preview").innerHTML = hljs.highlight("java", document.getElementById("preview").innerText).value;
+        document.getElementById("preview").innerHTML = hljs.highlight("java", text).value;
     }else if(highlightNum == 1){
         // preserved word highlight
         document.getElementById("style").href = "lib/styles/ascetic.css"
-        document.getElementById("preview").innerHTML = hljs.highlight("java", document.getElementById("preview").innerText).value;
+        document.getElementById("preview").innerHTML = hljs.highlight("java", text).value;
     }else if(highlightNum == 2){
         // gray
-        // do nothing
+        document.getElementById("preview").innerHTML = text;
     }else if(highlightNum == 3){
         // random highlight
+        let code = "";
+        let tokens = text.split(" ");
+        for(var i = 0; i < tokens.length; i++){
+            code += "<font color=\"#" + createRandomColorValue() + "\">" + tokens[i] + "</font> ";
+        }
+        document.getElementById("preview").innerHTML = code;
     }
+}
+
+function createRandomColorValue(){
+    let colorValue = "";
+    
+    for(var i = 0; i < 3; i++){
+        var rand = Math.floor(Math.random() * 128);
+        colorValue += rand.toString(16);
+    }
+    return colorValue;
 }
