@@ -63,5 +63,32 @@ function stopTimer(){
     window.clearInterval(timer);
     window.alert(document.getElementById("minute").innerHTML + ':' + document.getElementById("second").innerHTML);
     resetClock();
+}
+
+function changeFont(){
+    let code = document.getElementById("preview");
     
+    let font = document.getElementById("font");
+    let fontNum = font.selectedIndex;
+    
+    if(fontNum == 0){
+        code.style.fontFamily = "Courier";
+    }else if(fontNum == 1){
+        code.style.fontFamily = "arial"
+    }else if(fontNum == 2){
+        code.style.fontFamily = "DS-dada";
+    }
+}
+
+function changeHighlight(){
+    let highlight = document.getElementById("highlight");
+    let highlightNum = highlight.selectedIndex;
+    
+    if(highlightNum == 0){
+        hljs.initHighlighting();
+    }else if(highlightNum == 1){
+        
+    }else if(highlightNum == 3){
+        
+    }
 }
