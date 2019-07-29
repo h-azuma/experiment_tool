@@ -13,9 +13,9 @@
 <option value="control_list">セット1</option>
 <option value="control_string">セット2</option>
 <option value="mathmatical">セット3</option>
-<option value="conditional">セット4</option>
+<option value="conditional_branch">セット4</option>
 </select>
-<select id="task" onChange="deleteCode()">
+<select id="task">
 <option value=1>タスク1</option>
 <option value=2>タスク2</option>
 <option value=3>タスク3</option>
@@ -35,16 +35,21 @@
 <option value="propotional">非等幅フォント</option>
 <option value="kawaii">Kawaii</option>
 </select>
-<div id=buttonWrapper>
+<div id=buttonWrapper1>
 <button type="button" name="button" id="showButton" onclick="getCode()">表示</button>
+</div>
+<div id=buttonWrapper2>
+<button type="button" name="button" id="nextButton" onclick="goNextTask()">次に進む</button>
 </div>
 </div>
 
 <div id="right">
-<div id="time">
-<p><span id="minute">00</span> : <span id="second">00</span>
-<button type="button" name="button" id="stopButton" onclick="stopTimer()">stop</button></p>
+    
+<div id="progress">
+<p><span id="presentTask">0</span> / 24
+<button type="button" name="button" id="stopButton" onclick="stopTimer()">答え合わせ</button></p>
 </div>
+    
 <pre><code id="preview" class="java">
 package practice;
 

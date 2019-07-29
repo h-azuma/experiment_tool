@@ -1,5 +1,9 @@
 var timer;
 var showFlg = 0;
+let min = 0;
+let sec = 0;
+let setParam = '?taskSet=practice&task=practice&hl=full&font=nonPropotional&view=true';
+location.search = setParam;
 
 function deleteCode() {
     let code = document.getElementById("preview");
@@ -19,7 +23,7 @@ function getCode(){
     let filePath = "task/" + setName + "/Task" + taskSetNum + "_" + str2 + ".java";
     
     if(showFlg == 0){
-        timer = setInterval('showClock()',1000);
+        timer = setInterval('startClock()',1000);
         showFlg++;
     }
     
@@ -32,37 +36,67 @@ function getCode(){
     
 }
 
-function showClock() {
-   let min = parseInt(document.getElementById("minute").innerText, 10);
-   let sec = parseInt(document.getElementById("second").innerText, 10) + 1;
+function startClock() {
+    sec++;
 
-   if(sec >= 60){
-     sec = 0;
-     min += 1;
-   }
+    if(sec >= 60){
+        sec = 0;
+        min += 1;
+    }
+    
+    let logmin = min;
+    let logsec = sec;
+    if(min < 10){
+        logmin = '0' + min;
+    }
 
-   if(min < 10){
-     document.getElementById("minute").innerHTML = '0' + min;
-   }else{
-     document.getElementById("minute").innerHTML = min;
-   }
-
-   if(sec < 10){
-     document.getElementById("second").innerHTML = '0' + sec;
-   }else{
-     document.getElementById("second").innerHTML = sec;
-   }
+    if(sec < 10){
+        logsec = '0' + sec;
+    }
+    console.log(logmin + ':' + logsec);
 }
 
 function resetClock(){
-    document.getElementById("minute").innerHTML = '00';
-    document.getElementById("second").innerHTML = '00';
+    min = 0;
+    sec = 0;
 }
 
 function stopTimer(){
     window.clearInterval(timer);
-    window.alert(document.getElementById("minute").innerHTML + ':' + document.getElementById("second").innerHTML);
+    if(min < 10){
+        min = '0' + min;
+   }
+
+   if(sec < 10){
+       sec = '0' + sec;
+   }
+    window.alert(min + ':' + sec);
     resetClock();
+}
+
+function goNextTask(){
+    deleteCode();
+    let paramList = new Object;
+    let param = location.search.substring(1).split('&');
+    let paramSplit;
+    for (let i = 0; param[i]; i++) {
+        paramSplit = param[i].split('=');
+        paramList[paramSplit[0]] = paramSplit[1];
+    }
+    if (paramList["taskSet"] == "practice") {
+        paramList["taskSet"] = "control_list";
+        paramList["task"] = "1";
+        paramList["view"] = "false";
+    }
+    
+    param = "";
+    for (key in paramList){
+        param += key + "=" + paramList[key] + "&";
+    }
+    param = param.slice(0, -1);
+    
+    console.log(param);
+    window.location.search = param;
 }
 
 function changeFont(){
@@ -112,7 +146,7 @@ function changeHighlight(text){
 function createRandomColorValue(){
     let colorValue = "";
     
-    for(var i = 0; i < 3; i++){
+    for(let i = 0; i < 3; i++){
         var rand = Math.floor(Math.random() * 128);
         colorValue += rand.toString(16);
     }

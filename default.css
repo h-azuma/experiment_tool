@@ -52,17 +52,27 @@ code {
     margin-left: 5px;
 }
 
-#buttonWrapper {
+#buttonWrapper1 {
     text-align:center;
 }
 
 #showButton {
-    width: 30%;
-    height: 3%;
+    width: 100px;
+    height: 35px;
+    margin-top: 10px;
+}
+
+#buttonWrapper2 {
+    text-align:center;
+}
+
+#nextButton {
+    width: 100px;
+    height: 35px;
     margin-top: 10px;
 }
 
 #stopButton {
-    width: 5%;
-    height: 3%;
+    width: 100px;
+    height: 35px;
 }
