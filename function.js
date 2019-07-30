@@ -2,8 +2,12 @@ var timer;
 var showFlg = 0;
 let min = 0;
 let sec = 0;
-let setParam = '?taskSet=practice&task=practice&hl=full&font=nonPropotional&view=true';
-location.search = setParam;
+let taskSet = "practice"
+let task = 1;
+let hl = "full";
+let fnt = "nonPropotional";
+//let setParam = "?taskSet=practice&task=practice&hl=full&font=nonPropotional&view=true";
+//location.search = setParam;
 
 function deleteCode() {
     let code = document.getElementById("preview");
@@ -12,15 +16,18 @@ function deleteCode() {
 }
 
 function getCode(){
-    let set = document.getElementById("taskSet");
-    let taskSetNum = set.selectedIndex + 1;
-    let setName = set.options[taskSetNum - 1].value;
+    let taskSetNum = 0;
+    if(taskSet == "control_list"){
+        taskSetNum = 1;
+    }else if(taskSet == "control_string"){
+        taskSetNum = 2;
+    }else if(taskSet == "mathmatical"){
+        taskSetNum = 3;
+    }else if(taskSet == "conditional_branch"){
+        taskSetNum = 4;
+    }
 
-    let taskNum = document.getElementById("task");
-    let num = taskNum.selectedIndex;
-    let str2 = taskNum.options[num].value;
-
-    let filePath = "task/" + setName + "/Task" + taskSetNum + "_" + str2 + ".java";
+    let filePath = "task/" + taskSet + "/Task" + taskSetNum + "_" + task + ".java";
     
     if(showFlg == 0){
         timer = setInterval('startClock()',1000);
@@ -34,6 +41,8 @@ function getCode(){
     .then(() => changeFont())
     .catch((error) => console.log(error));
     
+    let taskNum = parseInt(document.getElementById("presentTask").innerHTML, 10);
+    document.getElementById("presentTask").innerHTML = taskNum + 1;
 }
 
 function startClock() {
@@ -75,7 +84,7 @@ function stopTimer(){
 }
 
 function goNextTask(){
-    deleteCode();
+    /*
     let paramList = new Object;
     let param = location.search.substring(1).split('&');
     let paramSplit;
@@ -96,43 +105,111 @@ function goNextTask(){
     param = param.slice(0, -1);
     
     console.log(param);
-    window.location.search = param;
+    location.search = param;
+    */
+    deleteCode();
+    
+    if(taskSet == "practice"){
+        taskSet = "control_list";
+        document.getElementById("taskSet").innerHTML = "セット1";
+        document.getElementById("task").innerHTML = "タスク" + task;
+    }else{
+        if(task == 6){
+            switch(taskSet){
+                case "control_list":
+                    taskSet = "control_string";
+                    document.getElementById("taskSet").innerHTML = "セット2";
+                    break;
+                case "control_string":
+                    taskSet = "mathmatical";
+                    document.getElementById("taskSet").innerHTML = "セット3";
+                    break;
+                case "mathmatical":
+                    taskSet = "conditional_branch";
+                    document.getElementById("taskSet").innerHTML = "セット4";
+                    break;
+            }
+            task = 0;
+        }
+        task++;
+        switch(task){
+            case 1:
+                hl = "full";
+                fnt = "nonPropotional";
+                break;
+            case 2:
+                hl = "preserved";
+                fnt = "nonPropotional";
+                break;
+            case 3:
+                hl = "gray";
+                fnt = "nonPropotional";
+                break;
+            case 4:
+                hl = "random";
+                fnt = "nonPropotional";
+                break;
+            case 5:
+                hl = "preserved";
+                fnt = "propotional";
+                break;
+            case 6:
+                hl = "preserved";
+                fnt = "kawaii";
+                break;
+        }
+        
+        document.getElementById("task").innerHTML = "タスク" + task;
+        switch(highlight){
+            case "full":
+                document.getElementById("highlight").innerHTML = "フルハイライト";
+            case "preserved":
+                document.getElementById("highlight").innerHTML = "予約語";
+            case "gray":
+                document.getElementById("highlight").innerHTML = "白黒";
+            case "random":
+                document.getElementById("highlight").innerHTML = "ランダム";
+        }
+        
+        switch(font){
+            case "nonPropotional":
+                document.getElementById("font").innerHTML = "等幅フォント";
+            case "propotional":
+                document.getElementById("font").innerHTML = "非等幅フォント";
+            case "kawaii":
+                document.getElementById("font").innerHTML = "Kawaiiフォント";    
+        }
+    }
 }
 
 function changeFont(){
     let code = document.getElementById("preview");
     
-    let font = document.getElementById("font");
-    let fontNum = font.selectedIndex;
-    
-    if(fontNum == 0){
+    if(fnt == "nonPropotional"){
         // non propotional font
         code.style.fontFamily = "Courier";
-    }else if(fontNum == 1){
+    }else if(fnt == "propotional"){
         // propotional font
         code.style.fontFamily = "arial";
-    }else if(fontNum == 2){
+    }else if(fnt == "kawaii"){
         // kawaii font
         code.style.fontFamily = "Mv Boli";
     }
 }
 
 function changeHighlight(text){
-    let highlight = document.getElementById("highlight");
-    let highlightNum = highlight.selectedIndex;
-    
-    if(highlightNum == 0){
+    if(hl == "full"){
         // full highlight
         document.getElementById("style").href = "lib/styles/vs.css"
         document.getElementById("preview").innerHTML = hljs.highlight("java", text).value;
-    }else if(highlightNum == 1){
+    }else if(hl == "preserved"){
         // preserved word highlight
         document.getElementById("style").href = "lib/styles/ascetic.css"
         document.getElementById("preview").innerHTML = hljs.highlight("java", text).value;
-    }else if(highlightNum == 2){
+    }else if(hl == "gray"){
         // gray
         document.getElementById("preview").innerHTML = text;
-    }else if(highlightNum == 3){
+    }else if(hl == "random"){
         // random highlight
         let code = "";
         let tokens = text.split(" ");
