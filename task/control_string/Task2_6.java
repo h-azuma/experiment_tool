@@ -1,20 +1,21 @@
 public static void main(String[] args) {
-    String str = "DIDIDRIIID";
-    int x = 0;
+  final String str = "DIDIRIIID";
 
-    // length of "str" is 10
-    for (int i = 0; i < str.length(); i++) {
-        char[] c = str.toCharArray();
-        if (c[i] == 'D') {
-            x--;
-        } else if (c[i] == 'I') {
-            x++;
-        } else if (c[i] == 'R') {
-            StringBuffer sb = new StringBuffer(str);
-            str = sb.reverse().toString();
-            // reversed "str" is "DIIIRDIDID"
-        }
+  String tmp = str;
+  int n = 0;
+
+  // length of "str" is 10
+  for (int i = 0; i < str.length(); i++) {
+    if (tmp.charAt(i) == 'D') {
+      n--;
+    } else if (tmp.charAt(i) == 'I') {
+      n++;
+    } else if (tmp.charAt(i) == 'R') {
+      // reverse "tmp" string
+      StringBuffer sb = new StringBuffer(str);
+      tmp = sb.reverse().toString(); // reversed "str" is "DIIIRIDID"
     }
+  }
 
-    System.out.println(x);
+  System.out.println(n);
 }

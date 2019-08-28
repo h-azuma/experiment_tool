@@ -1,19 +1,17 @@
 public static void main(String[] args) {
-    List<String> list = new ArrayList<>();
-    String input = "0011B10";
-    String[] inputArray = input.split("");
+  final String input = "012B81A";
+  final String[] list = input.split("");
+  String output = "";
 
-    for (String character : inputArray) {
-        if (character.equals("0") || character.equals("1")) {
-            list.add(character);
-        } else {
-            if (list.size() != 0) {
-                list.remove(list.size() - 1);
-            }
-        }
+  for (String c : list) {
+    if (c.equals("B")) {
+      // backspace to buffer
+      output = output.substring(0, output.length() - 1);
+    } else {
+      // append to buffer
+      output += c;
     }
+  }
 
-    for (String output : list) {
-        System.out.print(output);
-    }
+  System.out.println(output);
 }

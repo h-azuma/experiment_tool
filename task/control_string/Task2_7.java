@@ -1,20 +1,20 @@
 public static void main(String[] args) {
-    String str = "HAHOGAKZZFEGA";
-    char[] strArray = str.toCharArray();
-    int start = 0;
-    int end = 0;
-    boolean flg = false;
+  final String str = "ZAMMAZZFA";
 
-    for (int i = 0; i < strArray.length; i++) {
-        // check the location of 'A'and 'Z'
-        if (strArray[i] == 'A' && !(flg)) {
-            start = i;
-            flg = true;
-        } else if (strArray[i] == 'Z') {
-            end = i;
-        }
+  int begin = 0;
+  int end = 0;
+  boolean foundA = false;
+
+  for (int i = 0; i < str.length(); i++) {
+    // check the index of 'A' and 'Z'
+    if (str.charAt(i) == 'A' && !(foundA)) {
+      begin = i;
+      foundA = true;
+    } else if (str.charAt(i) == 'Z') {
+      end = i;
     }
+  }
 
-    // output distance between 'A' and 'Z'
-    System.out.println(end - start + 1);
+  // output length of substring between 'A' and 'Z'
+  System.out.println(end - begin - 1);
 }

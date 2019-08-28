@@ -1,13 +1,15 @@
 public static void main(String[] args) {
-    String str = "amkllannsnom";
+  final String str = "amklammslo";
 
-    // store the character of the string one by one
-    List<String> stringList = new ArrayList<String>(Arrays.asList(str.split("")));
+  // "buffer" stores characters matched the condition
+  String buffer = "";
 
-    stringList.removeIf(s -> s.matches("l|m|n"));
-
-    // output the remained string
-    for (int i = stringList.size() - 1; i >= 0; i--) {
-        System.out.print(stringList.get(i));
+  for (int i = str.length() - 1; i >= 0; i--) {
+    if (str.charAt(i) != 'm' && str.charAt(i) != 'l') {
+      buffer += str.charAt(i);
     }
+  }
+
+  // output "buffer"
+  System.out.println(buffer);
 }

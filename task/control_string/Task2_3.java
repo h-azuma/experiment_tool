@@ -1,13 +1,14 @@
 public static void main(String[] args) {
-    String str = "abcabc";
+  final String str = "abcaabc";
+  final int windowSize = 2;
 
-    for (int i = 1; i <= 3; i++) {
-        // "set" is a set of unique strings of length i
-        Set<String> set = new HashSet<>();
-        for (int j = 0; j < str.length() - i + 1; j++) {
-            set.add(str.substring(j, j + i));
-        }
-        // output the number of species of the strings in "set"
-        System.out.println(set.size());
-    }
+  // set stores substring of "str"
+  Set<String> set = new HashSet<>();
+
+  for (int i = 0; i < str.length() - windowSize + 1; i++) {
+    set.add(str.substring(i, i + windowSize));
+  }
+
+  // output the number of substrings
+  System.out.println(set.size());
 }

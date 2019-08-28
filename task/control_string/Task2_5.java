@@ -1,36 +1,24 @@
 public static void main(String[] args) {
-    String HandOfA = "bcaac";
-    String HandOfB = "acbba";
-    String HandOfC = "cacbb";
-    char turn = 'a';
-    char winner;
+  final String handOfA = "12221";
+  final String handOfB = "13312";
+  int sum = 0;
+  char winner = '-';
 
-    while (true) {
-        // can win when lose all characters in hand
-        // determine the person who can act next by the head character
-        if (turn == 'a') {
-            turn = HandOfA.charAt(0);
-            HandOfA = HandOfA.substring(1);
-            if (HandOfA.length() == 0) {
-                winner = 'a';
-                break;
-            }
-        } else if (turn == 'b') {
-            turn = HandOfB.charAt(0);
-            HandOfB = HandOfB.substring(1);
-            if (HandOfB.length() == 0) {
-                winner = 'b';
-                break;
-            }
-        } else if (turn == 'c') {
-            turn = HandOfC.charAt(0);
-            HandOfC = HandOfC.substring(1);
-            if (HandOfC.length() == 0) {
-                winner = 'c';
-                break;
-            }
-        }
+  for (int i = 0; i < handOfA.length(); i++) {
+    sum += handOfA.charAt(i) - '0'; // convert char to int
+
+    // player lose if sum exceed 10
+    if (sum >= 10) {
+      winner = 'b';
+      break;
     }
 
-    System.out.println(winner);
+    sum += handOfB.charAt(i) - '0';
+    if (sum >= 10) {
+      winner = 'a';
+      break;
+    }
+  }
+
+  System.out.println(winner + " " + sum);
 }

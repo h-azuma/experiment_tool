@@ -1,24 +1,17 @@
 public static void main(String[] args) {
-    List<Integer> list1 = Arrays.asList(1, 3, 2, 3, 1);
-    List<Integer> list2 = Arrays.asList(2, 1, 1, 2, 3);
-    int num = 0;
+  final List<Integer> list1 = Arrays.asList(1, 4, 6, 9);
+  final List<Integer> list2 = Arrays.asList(2, 6, 10, 8);
+  int pairs = 0;
 
-    // count pairs of number
-    for (int i = 0; i < list1.size(); i++) {
-        if (!(isRecordedBefore(list1, list2, i))) {
-            num++;
-        }
+  for (int s1 : list1) {
+    for (int s2 : list2) {
+      if (Math.abs(s1 - s2) <= 1) {
+        // count the number of pairs matched the condition
+        pairs++;
+      }
     }
+  }
 
-    // output num
-    System.out.println(num);
-}
-
-private static boolean isRecordedBefore(List<Integer> list1, List<Integer> list2, int now) {
-    for (int i = 0; i < now; i++) {
-        if (list1.get(i) == list2.get(now) && list1.get(now) == list2.get(i)) {
-            return true;
-        }
-    }
-    return false;
+  // output number of pairs
+  System.out.println(pairs);
 }
