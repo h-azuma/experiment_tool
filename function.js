@@ -46,7 +46,7 @@ function getCode(){
             .then(() => changeFont())
             .catch((error) => console.log(error));
         } else {
-            window.alert("次に進むボタンを押してください．");
+             window.alert("次に進むボタンを押してください．");
         }
     } else if (isOnTimer) {
         window.alert("コードはすでに表示されています．");
@@ -88,7 +88,7 @@ function stopTimer(){
         if(sec < 10){
             sec = '0' + sec;
         }
-        window.alert(min + ':' + sec);
+        // window.alert(min + ':' + sec);
         isOnTimer = false;
         isFinishedTask = true;
         resetClock();
