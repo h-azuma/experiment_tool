@@ -1,4 +1,4 @@
-var timer;
+let timer;
 let showFlg = true;
 let min = 0;
 let sec = 0;
@@ -11,6 +11,19 @@ let isFinishedTask = true;
 //let setParam = "?taskSet=practice&task=practice&hl=full&font=nonPropotional&view=true";
 //location.search = setParam;
 
+window.onload = function() {
+    showButton = document.getElementById("showButton");
+    nextButton = document.getElementById("nextButton");
+    stopButton = document.getElementById("stopButton");
+    giveUpButton = document.getElementById("giveUpButton");
+    showButton.style.backgroundColor = "white";
+    showButton.style.color = "white";
+    stopButton.style.backgroundColor = "white";
+    stopButton.style.color = "white";
+    giveUpButton.style.backgroundColor = "white";
+    giveUpButton.style.color = "white";
+}
+
 function deleteCode() {
     let code = document.getElementById("preview");
     code.innerText = "";
@@ -19,6 +32,15 @@ function deleteCode() {
 
 function getCode(){
     if (!isOnTimer) {
+        showButton.style.backgroundColor = "white";
+        showButton.style.color = "white";
+        nextButton.style.backgroundColor = "white";
+        nextButton.style.color = "white";
+        stopButton.style.backgroundColor = "";
+        stopButton.style.color = "";
+        giveUpButton.style.backgroundColor = "";
+        giveUpButton.style.color = "";
+        
         let taskSetNum = 0;
         if(taskSet == "control_list"){
             taskSetNum = 1;
@@ -46,10 +68,10 @@ function getCode(){
             .then(() => changeFont())
             .catch((error) => console.log(error));
         } else {
-             window.alert("次に進むボタンを押してください．");
+             // window.alert("次に進むボタンを押してください．");
         }
     } else if (isOnTimer) {
-        window.alert("コードはすでに表示されています．");
+        // window.alert("コードはすでに表示されています．");
     }　
 }
 
@@ -61,6 +83,11 @@ function startClock() {
         min += 1;
     }
     
+    if (min == 5) {
+        window.alert("タイムアップです．");
+        stopTimer();
+    }
+    
     let logmin = min;
     let logsec = sec;
     if(min < 10){
@@ -70,7 +97,7 @@ function startClock() {
     if(sec < 10){
         logsec = '0' + sec;
     }
-    // console.log(logmin + ':' + logsec);
+    console.log(logmin + ':' + logsec);
 }
 
 function resetClock(){
@@ -80,6 +107,15 @@ function resetClock(){
 
 function stopTimer(){
     if (isOnTimer) {
+        showButton.style.backgroundColor = "white";
+        showButton.style.color = "white";
+        nextButton.style.backgroundColor = "";
+        nextButton.style.color = "";
+        stopButton.style.backgroundColor = "white";
+        stopButton.style.color = "white";
+        giveUpButton.style.backgroundColor = "white";
+        giveUpButton.style.color = "white";
+        
         window.clearInterval(timer);
         if(min < 10){
             min = '0' + min;
@@ -94,13 +130,17 @@ function stopTimer(){
         resetClock();
     } else {
         if (isFinishedTask) {
-            window.alert("次に進むボタンを押してください．");
+            // window.alert("次に進むボタンを押してください．");
         } else {
-            window.alert("表示ボタンを押してください．");
+            // window.alert("表示ボタンを押してください．");
         }
         
     }
     
+}
+
+function giveUp(){
+    stopTimer();
 }
 
 function goNextTask(){
@@ -128,6 +168,15 @@ function goNextTask(){
     location.search = param;
     */
     if (showFlg && isFinishedTask) {
+        showButton.style.backgroundColor = "";
+        showButton.style.color = "";
+        nextButton.style.backgroundColor = "white";
+        nextButton.style.color = "white";
+        stopButton.style.backgroundColor = "white";
+        stopButton.style.color = "white";
+        giveUpButton.style.backgroundColor = "white";
+        giveUpButton.style.color = "white";
+        
         deleteCode();
         isFinishedTask = false;
     
@@ -136,7 +185,7 @@ function goNextTask(){
             document.getElementById("taskSet").innerHTML = "セット1";
             document.getElementById("task").innerHTML = "タスク" + task;
         }else{
-            if(task == 6){
+            if(task == 7){
                 switch(taskSet){
                     case "control_list":
                         taskSet = "control_string";
@@ -179,9 +228,14 @@ function goNextTask(){
                     hl = "preserved";
                     fnt = "kawaii";
                     break;
+                case 7:
+                    hl = "random";
+                    fnt = "kawaii";
+                    break;
             }
-        
+            
             document.getElementById("task").innerHTML = "タスク" + task;
+            /*
             switch(hl){
                 case "full":
                     document.getElementById("highlight").innerHTML = "フルハイライト";
@@ -208,11 +262,12 @@ function goNextTask(){
                     document.getElementById("font").innerHTML = "Kawaiiフォント";
                     break;
             }
+            */
         }
     } else if (!showFlg){
-        window.alert("表示ボタンを押してください．");
+        // window.alert("表示ボタンを押してください．");
     } else if (!isFinishedTask) {
-        window.alert("現在のタスクを終了してください．");
+        // window.alert("現在のタスクを終了してください．");
     }
     
     

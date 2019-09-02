@@ -11,8 +11,8 @@
 <div id="left">
 <p><span id="taskSet">練習</span></p>
 <p><span id="task">練習用タスク</span></p>
-<p><span id="highlight">フルハイライト</span></p>
-<p><span id="font">等幅フォント</span></p>
+<!--<p><span id="highlight">フルハイライト</span></p>
+<p><span id="font">等幅フォント</span></p>-->
 <div id=buttonWrapper1>
 <button type="button" name="button" id="showButton" onclick="getCode()">表示</button>
 </div>
@@ -24,8 +24,9 @@
 <div id="right">
     
 <div id="progress">
-<p><span id="presentTask">0</span> / 24
-<button type="button" name="button" id="stopButton" onclick="stopTimer()">分かった！</button></p>
+<p><span id="presentTask">0</span> / 28
+<button type="button" name="button" id="stopButton" onclick="stopTimer()">分かった！</button>
+<button type="button" name="button" id="giveUpButton" onclick="giveUp()">諦める</button></p>
 </div>
     
 <pre><code id="preview" class="java">
