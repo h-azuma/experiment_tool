@@ -1,3 +1,4 @@
+
 package mathmatical;
 
 // AtCoder Beginner Contest 006 - Bを改題

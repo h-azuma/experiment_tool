@@ -1,0 +1,142 @@
+taskNumber
+20 7
+E D B G F A C
+G A F C D E B
+D G C B E F A
+F B A D C G E
+A C D E G B F
+C F E A B D G
+B E G F A C D
+A C F G B E D
+B E D F A G C
+G D C E F B A
+E G A D C F B
+F B G A D C E
+D F B C E A G
+C A E B G D F
+C B G A F D E
+F C E D A B G
+G F B E C A D
+B G D F E C A
+A E F B D G C
+D A C G B E F
+E D A C G F B
+
+taskSet
+20 4
+A B D C
+B A C D
+D C B A
+C D A B
+C A D B
+A C B D
+D B C A
+B D A C
+A B C D
+C D A B
+D C B A
+B A D C
+A B D C
+D C A B
+B A C D
+C D B A
+C B D A
+A C B D
+D A C B
+B D A C
+
+status1
+20 7
+E D C A F B G
+C A F B E G D
+F G B C D E A
+B E D G A F C
+G F A D B C E
+A C E F G D B
+D B G E C A F
+B F C A E D G
+E C G F D A B
+A D E C B G F
+F A B D G C E
+D E A G F B C
+C G F B A E D
+G B D E C F A
+A G F C D B E
+C E A D B G F
+B C E A F D G
+D B G F E A C
+F D B E G C A
+E A D G C F B
+G F C B A E D
+
+status2
+20 7
+A E B G D F C
+G A F C B E D
+B C E F A D G
+F B G D C A E
+C G D E F B A
+E D A B G C F
+D F C A E G B
+D A G F E B C
+G E C A D F B
+F D A B G C E
+A C B G F E D
+B G F E C D A
+C B E D A G F
+E F D C B A G
+E F C D A G B
+C A B F G E D
+G C A E B D F
+F G E A D B C
+A B D G C F E
+B D F C E A G
+D E G B F C A
+
+status3
+20 7
+B D C A G E F
+D C E G F A B
+F G B D E C A
+G A D B C F E
+A B F E D G C
+E F A C B D G
+C E G F A B D
+B F G C D E A
+F D A E C G B
+E C B D G A F
+A E D F B C G
+C B E G A F D
+D G F A E B C
+G A C B F D E
+E D A C G F B
+B A C G F E D
+C G B F A D E
+F C D A E B G
+D F E B C G A
+A E G D B C F
+G B F E D A C
+
+status4
+20 7
+F A G D B C E
+D B C G E F A
+A F E C D B G
+G E B A C D F
+B C A F G E D
+E D F B A G C
+C G D E F A B
+A E F D G C B
+G A E F B D C
+B F D G C E A
+C D B E A F G
+E C A B D G F
+D G C A F B E
+F B G C E A D
+E D A B G F C
+D C G F B E A
+F G E D C A B
+A E C G D B F
+B A F C E G D
+C F B E A D G
+G B D A F C E

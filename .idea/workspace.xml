@@ -2,35 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95696c98-07fe-474a-90b1-fffcdf7f605c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/task/conditional_branch/Task4_1.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/conditional_branch/Task4_1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/conditional_branch/Task4_2.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/conditional_branch/Task4_2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/conditional_branch/Task4_3.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/conditional_branch/Task4_3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/conditional_branch/Task4_4.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/conditional_branch/Task4_4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/conditional_branch/Task4_5.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/conditional_branch/Task4_5.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/conditional_branch/Task4_6.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/conditional_branch/Task4_6.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/conditional_branch/Task4_7.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/conditional_branch/Task4_7.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/control_list/Task1_1.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/control_list/Task1_1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/control_list/Task1_2.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/control_list/Task1_2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/control_list/Task1_3.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/control_list/Task1_3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/control_list/Task1_4.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/control_list/Task1_4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/control_list/Task1_5.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/control_list/Task1_5.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/control_list/Task1_6.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/control_list/Task1_6.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/control_list/Task1_7.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/control_list/Task1_7.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/control_string/Task2_1.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/control_string/Task2_1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/control_string/Task2_2.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/control_string/Task2_2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/control_string/Task2_3.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/control_string/Task2_3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/control_string/Task2_4.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/control_string/Task2_4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/control_string/Task2_5.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/control_string/Task2_5.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/control_string/Task2_6.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/control_string/Task2_6.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/control_string/Task2_7.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/control_string/Task2_7.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/task/mathmatical/Task3_1.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/mathmatical/Task3_1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/mathmatical/Task3_2.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/mathmatical/Task3_2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/mathmatical/Task3_3.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/mathmatical/Task3_3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/mathmatical/Task3_4.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/mathmatical/Task3_4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/mathmatical/Task3_5.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/mathmatical/Task3_5.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/mathmatical/Task3_6.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/mathmatical/Task3_6.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/mathmatical/Task3_7.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/mathmatical/Task3_7.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/mathmatical/Task3_8.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/mathmatical/Task3_8.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -39,10 +11,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/task/mathmatical/Task3_1.java">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -67,6 +43,7 @@
         <option value="$PROJECT_DIR$/task/control_string/Task2_5.java" />
         <option value="$PROJECT_DIR$/task/control_string/Task2_6.java" />
         <option value="$PROJECT_DIR$/task/control_string/Task2_7.java" />
+        <option value="$PROJECT_DIR$/task/mathmatical/Task3_1.java" />
       </list>
     </option>
   </component>
@@ -91,7 +68,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -132,10 +108,12 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -166,16 +144,17 @@
       <updated>1566974754944</updated>
       <workItem from="1566974756179" duration="91000" />
       <workItem from="1566974878643" duration="1244000" />
+      <workItem from="1567573805436" duration="249000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1335000" />
+    <option name="totallyTimeSpent" value="1584000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="702" y="260" width="1400" height="1000" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25373134" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25746268" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -300,7 +279,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/task/mathmatical/Task3_1.java">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
