@@ -7,7 +7,7 @@ let hl = "full";
 let fnt = "nonPropotional";
 let isOnTimer = false;
 let isFinishedTask = true;
-let isEnterID = false;
+let isEnteredID = false;
 let ID;
 let times = new Array(28);
 let taskSetNum;
@@ -37,7 +37,7 @@ window.onload = function() {
 
 function getID() {
     ID = document.forms.input.inputForm.value;
-    if (ID > -1 && ID < 21) {
+    if (ID > -1 && ID < 21 && !isEnteredID) {
         nextButton.style.backgroundColor = "";
         nextButton.style.color = "";
         finishLink.style.color = "";
@@ -45,7 +45,9 @@ function getID() {
         getOrder();
         getStatusOrder();
         
-        isEnterID = true;
+        isEnteredID = true;
+    } else if (isEnteredID) {
+        window.alert("IDはすでに入力されています．");
     } else {
         window.alert("IDを正しく入力してください．");
     }
@@ -265,7 +267,7 @@ function goNextTask(){
     console.log(param);
     location.search = param;
     */
-    if (showFlg && isFinishedTask && isEnterID && taskNum < 28) {
+    if (showFlg && isFinishedTask && isEnteredID && taskNum < 28) {
         showButton.style.backgroundColor = "";
         showButton.style.color = "";
         nextButton.style.backgroundColor = "white";

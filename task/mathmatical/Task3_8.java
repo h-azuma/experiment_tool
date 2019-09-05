@@ -1,27 +1,25 @@
-package mathmatical;
+public static void main(String[] args) {
+  final int a = 84;
+  final int b = 48;
+  final int number = 7;
+  int divisors = 0;
 
-// AtCoder Beginner Contest 051 - Bを改題
-// https://atcoder.jp/contests/abc051/tasks/abc051_b
-
-public class Task3_8 {
-  public static void main(String[] args) {
-    // 0 <= x, y, z <= max
-    final int max = 2;
-
-    // x + y + z = sum
-    final int sum = 2;
-    int count = 0;
-
-    for (int x = 0; x <= max; x++) {
-      for (int y = 0; y <= max; y++) {
-        int z = sum - x - y;
-        if (0 <= z && z <= max) {
-          count++;
-        } else if (z < 0) {
-          break;
-        }
-      }
-    }
-    System.out.println(count);
+  int start, end;
+  // set start and end
+  if (a > b) {
+    start = b;
+    end = a;
+  } else {
+    start = a;
+    end = b;
   }
+
+  for (int i = start; i < end; i++) {
+    // count divisors between start and end
+    if (i % number == 0) {
+      divisors++;
+    }
+  }
+
+  System.out.println(divisors);
 }
