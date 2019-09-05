@@ -9,20 +9,28 @@
 <link rel="stylesheet" type="text/css" href="default.css">
 </head>
 <div id="left">
+
+<form action="" id="input">
+<p>ID<br><input type="text" name="form" id="inputForm">   <input type="button" value="送信" onclick="getID()"></p>
+</form>
+    
 <p><span id="taskSet">練習</span></p>
 <p><span id="task">練習用タスク</span></p>
 <!--<p><span id="highlight">フルハイライト</span></p>
 <p><span id="font">等幅フォント</span></p>-->
-<div id=buttonWrapper1>
+<div id="buttonWrapper1">
 <button type="button" name="button" id="showButton" onclick="getCode()">表示</button>
 </div>
-<div id=buttonWrapper2>
+<div id="buttonWrapper2">
 <button type="button" name="button" id="nextButton" onclick="goNextTask()">次に進む</button>
+</div>
+<div id="box">
+<a id="finishLink" href="#" download="" onclick="finish()">実験終了</a>
 </div>
 </div>
 
 <div id="right">
-    
+
 <div id="progress">
 <p><span id="presentTask">0</span> / 28
 <button type="button" name="button" id="stopButton" onclick="stopTimer()">分かった！</button>
@@ -47,4 +55,5 @@ public static void main(String[] main) {
 }
 </code></pre>
 </div>
+
 </html>

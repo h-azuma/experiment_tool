@@ -2,12 +2,19 @@ let timer;
 let showFlg = true;
 let min = 0;
 let sec = 0;
-let taskSet = "practice"
-let task = 1;
+let taskSet = "practice";
 let hl = "full";
 let fnt = "nonPropotional";
 let isOnTimer = false;
 let isFinishedTask = true;
+let isEnterID = false;
+let ID;
+let times = new Array(28);
+let taskSetNum;
+let taskNum = 0;
+let taskSetOrder = new Array(4);
+let taskOrder = new Array(7);
+let statusOrder = new Array(28);
 //let setParam = "?taskSet=practice&task=practice&hl=full&font=nonPropotional&view=true";
 //location.search = setParam;
 
@@ -16,12 +23,102 @@ window.onload = function() {
     nextButton = document.getElementById("nextButton");
     stopButton = document.getElementById("stopButton");
     giveUpButton = document.getElementById("giveUpButton");
+    finishButton = document.getElementById("finishButton");
     showButton.style.backgroundColor = "white";
     showButton.style.color = "white";
+    nextButton.style.backgroundColor = "white";
+    nextButton.style.color = "white";
     stopButton.style.backgroundColor = "white";
     stopButton.style.color = "white";
     giveUpButton.style.backgroundColor = "white";
     giveUpButton.style.color = "white";
+    finishLink.style.color = "white";
+}
+
+function getID() {
+    ID = document.forms.input.inputForm.value;
+    if (ID > -1 && ID < 21) {
+        nextButton.style.backgroundColor = "";
+        nextButton.style.color = "";
+        finishLink.style.color = "";
+        
+        getOrder();
+        getStatusOrder();
+        
+        isEnterID = true;
+    } else {
+        window.alert("IDを正しく入力してください．");
+    }
+}
+
+function getOrder() {
+    let req1 = new XMLHttpRequest();
+    req1.open("get", "square/taskSet.csv", true);
+    req1.send(null);
+	
+    req1.onload = function(){
+        let tmp = req1.responseText.split("\n");
+        taskSetOrder = tmp[ID].split(',');
+    }
+    
+    let req2 = new XMLHttpRequest();
+    req2.open("get", "square/taskNumber.csv", true);
+    req2.send(null);
+	
+    req2.onload = function(){
+        let tmp = req2.responseText.split("\n");
+        taskOrder = tmp[ID].split(',');
+    }
+}
+
+function getStatusOrder() {
+    let req1 = new XMLHttpRequest();
+    req1.open("get", "square/status1.csv", true);
+    req1.send(null);
+	
+    req1.onload = function(){
+        let tmp1 = req1.responseText.split("\n");
+        let tmp2 = tmp1[ID].split(',');
+        for (let j = 0; j < tmp2.length; j++) {
+                statusOrder[0 * 7 + j] = tmp2[j];
+        }
+    }
+    
+    let req2 = new XMLHttpRequest();
+    req2.open("get", "square/status2.csv", true);
+    req2.send(null);
+	
+    req2.onload = function(){
+        let tmp1 = req2.responseText.split("\n");
+        let tmp2 = tmp1[ID].split(',');
+        for (let j = 0; j < tmp2.length; j++) {
+                statusOrder[1 * 7 + j] = tmp2[j];
+        }
+    }
+    
+    let req3 = new XMLHttpRequest();
+    req3.open("get", "square/status3.csv", true);
+    req3.send(null);
+	
+    req3.onload = function(){
+        let tmp1 = req1.responseText.split("\n");
+        let tmp2 = tmp1[ID].split(',');
+        for (let j = 0; j < tmp2.length; j++) {
+                statusOrder[2 * 7 + j] = tmp2[j];
+        }
+    }
+    
+    let req4 = new XMLHttpRequest();
+    req4.open("get", "square/status4.csv", true);
+    req4.send(null);
+	
+    req4.onload = function(){
+        let tmp1 = req1.responseText.split("\n");
+        let tmp2 = tmp1[ID].split(',');
+        for (let j = 0; j < tmp2.length; j++) {
+                statusOrder[3 * 7 + j] = tmp2[j];
+        }
+    }
 }
 
 function deleteCode() {
@@ -31,7 +128,7 @@ function deleteCode() {
 }
 
 function getCode(){
-    if (!isOnTimer) {
+    if (!isOnTimer && !isFinishedTask) {
         showButton.style.backgroundColor = "white";
         showButton.style.color = "white";
         nextButton.style.backgroundColor = "white";
@@ -41,26 +138,23 @@ function getCode(){
         giveUpButton.style.backgroundColor = "";
         giveUpButton.style.color = "";
         
-        let taskSetNum = 0;
-        if(taskSet == "control_list"){
-            taskSetNum = 1;
-        }else if(taskSet == "control_string"){
-            taskSetNum = 2;
-        }else if(taskSet == "mathmatical"){
-            taskSetNum = 3;
-        }else if(taskSet == "conditional_branch"){
-            taskSetNum = 4;
+        if(taskSetNum == 1){
+            taskSet = "control_list";
+        }else if(taskSetNum == 2){
+            taskSet = "control_string";
+        }else if(taskSetNum == 3){
+            taskSet = "mathmatical";
+        }else if(taskSetNum == 4){
+            taskSet = "conditional_branch";
         }
 
-        let filePath = "task/" + taskSet + "/Task" + taskSetNum + "_" + task + ".java";
-        let taskNum = parseInt(document.getElementById("presentTask").innerHTML, 10);
+        let filePath = "task/" + taskSet + "/Task" + taskSetNum + "_" + taskOrder[(taskNum - 1) % 7] + ".java";
     
         if(!showFlg){
             console.log("Timer Start")
             timer = setInterval('startClock()',1000);
             showFlg = true;
             isOnTimer = true;
-            document.getElementById("presentTask").innerHTML = taskNum + 1;
             // console.log(filePath);
             fetch(filePath)
             .then((response) => response.text())
@@ -97,7 +191,7 @@ function startClock() {
     if(sec < 10){
         logsec = '0' + sec;
     }
-    console.log(logmin + ':' + logsec);
+    //console.log(logmin + ':' + logsec);
 }
 
 function resetClock(){
@@ -124,6 +218,9 @@ function stopTimer(){
         if(sec < 10){
             sec = '0' + sec;
         }
+        
+        times[(taskSetNum - 1) * 7 + parseInt(taskOrder[(taskNum - 1) % 7], 10) - 1] = min + ":" + sec;
+        //console.log((taskSetNum - 1) * 7 + parseInt(taskOrder[(taskNum - 1) % 7], 10) - 1);
         // window.alert(min + ':' + sec);
         isOnTimer = false;
         isFinishedTask = true;
@@ -141,6 +238,7 @@ function stopTimer(){
 
 function giveUp(){
     stopTimer();
+    times[(taskSetNum - 1) * 7 + parseInt(taskOrder[(taskNum - 1) % 7], 10) - 1] = "-";
 }
 
 function goNextTask(){
@@ -167,7 +265,7 @@ function goNextTask(){
     console.log(param);
     location.search = param;
     */
-    if (showFlg && isFinishedTask) {
+    if (showFlg && isFinishedTask && isEnterID && taskNum < 28) {
         showButton.style.backgroundColor = "";
         showButton.style.color = "";
         nextButton.style.backgroundColor = "white";
@@ -179,63 +277,48 @@ function goNextTask(){
         
         deleteCode();
         isFinishedTask = false;
-    
-        if(taskSet == "practice"){
-            taskSet = "control_list";
-            document.getElementById("taskSet").innerHTML = "セット1";
-            document.getElementById("task").innerHTML = "タスク" + task;
-        }else{
-            if(task == 7){
-                switch(taskSet){
-                    case "control_list":
-                        taskSet = "control_string";
-                        document.getElementById("taskSet").innerHTML = "セット2";
-                        break;
-                    case "control_string":
-                        taskSet = "mathmatical";
-                        document.getElementById("taskSet").innerHTML = "セット3";
-                        break;
-                    case "mathmatical":
-                        taskSet = "conditional_branch";
-                        document.getElementById("taskSet").innerHTML = "セット4";
-                        break;
-                }
-                task = 0;
-            }
-            task++;
-            switch(task){
-                case 1:
-                    hl = "full";
-                    fnt = "nonPropotional";
-                    break;
-                case 2:
-                    hl = "preserved";
-                    fnt = "nonPropotional";
-                    break;
-                case 3:
-                    hl = "gray";
-                    fnt = "nonPropotional";
-                    break;
-                case 4:
-                    hl = "random";
-                    fnt = "nonPropotional";
-                    break;
-                case 5:
-                    hl = "preserved";
-                    fnt = "propotional";
-                    break;
-                case 6:
-                    hl = "preserved";
-                    fnt = "kawaii";
-                    break;
-                case 7:
-                    hl = "random";
-                    fnt = "kawaii";
-                    break;
-            }
-            
-            document.getElementById("task").innerHTML = "タスク" + task;
-            /*
+        
+        taskNum++;
+        document.getElementById("presentTask").innerHTML = taskNum;
+        
+        switch(statusOrder[taskNum]){
+            case "1":
+                hl = "full";
+                fnt = "nonPropotional";
+                break;
+            case "2":
+                hl = "preserved";
+                fnt = "nonPropotional";
+                break;
+            case "3":
+                hl = "gray";
+                fnt = "nonPropotional";
+                break;
+            case "4":
+                hl = "random";
+                fnt = "nonPropotional";
+                break;
+            case "5":
+                hl = "preserved";
+                fnt = "propotional";
+                break;
+            case "6":
+                hl = "preserved";
+                fnt = "kawaii";
+                break;
+            case "7":
+                hl = "random";
+                fnt = "kawaii";
+                break;
+        }
+        
+        taskSetNum = parseInt(taskSetOrder[parseInt((taskNum - 1) / 7)], 10);
+        //console.log(taskSetNum);
+        
+        document.getElementById("taskSet").innerHTML = (parseInt((taskNum - 1) / 7) + 1) + "セット目";
+        document.getElementById("task").innerHTML = "タスク" + (taskNum - parseInt((taskNum - 1) / 7) * 7);
+        
+        /*
             switch(hl){
                 case "full":
                     document.getElementById("highlight").innerHTML = "フルハイライト";
@@ -263,11 +346,12 @@ function goNextTask(){
                     break;
             }
             */
-        }
     } else if (!showFlg){
         // window.alert("表示ボタンを押してください．");
     } else if (!isFinishedTask) {
         // window.alert("現在のタスクを終了してください．");
+    } else if(taskNum == 28) {
+        window.alert("実験は終了です．お疲れ様でした．")
     }
     
     
@@ -291,11 +375,11 @@ function changeFont(){
 function changeHighlight(text){
     if(hl == "full"){
         // full highlight
-        document.getElementById("style").href = "lib/styles/vs.css"
+        document.getElementById("style").href = "lib/styles/vs.css";
         document.getElementById("preview").innerHTML = hljs.highlight("java", text).value;
     }else if(hl == "preserved"){
         // preserved word highlight
-        document.getElementById("style").href = "lib/styles/ascetic.css"
+        document.getElementById("style").href = "lib/styles/ascetic.css";
         document.getElementById("preview").innerHTML = hljs.highlight("java", text).value;
     }else if(hl == "gray"){
         // gray
@@ -319,4 +403,25 @@ function createRandomColorValue(){
         colorValue += rand.toString(16);
     }
     return colorValue;
+}
+
+function finish() {
+    let content = "";
+    let setNum = 1;
+    for (let i = 0; i < times.length; i++) {
+        content += setNum + "-" + ((i % 7) + 1) + "," + times[i];
+        if (i != times.length - 1) {
+            content += "\n";
+        }
+        
+        if ((i + 1) % 7 == 0) {
+            setNum++;
+        }
+    }
+    
+    let blob = new Blob([ content ], { "type" : "text/csv" });
+    
+    document.getElementById("finishLink").download = ID + ".csv";
+    
+    document.getElementById("finishLink").href = window.URL.createObjectURL(blob);
 }
