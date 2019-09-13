@@ -163,12 +163,8 @@ function getCode(){
             .then((text) => changeHighlight(text))
             .then(() => changeFont())
             .catch((error) => console.log(error));
-        } else {
-             // window.alert("次に進むボタンを押してください．");
         }
-    } else if (isOnTimer) {
-        // window.alert("コードはすでに表示されています．");
-    }　
+    }
 }
 
 function startClock() {
@@ -184,7 +180,7 @@ function startClock() {
         stopTimer();
     }
     
-    let logmin = min;
+    /*let logmin = min;
     let logsec = sec;
     if(min < 10){
         logmin = '0' + min;
@@ -193,7 +189,7 @@ function startClock() {
     if(sec < 10){
         logsec = '0' + sec;
     }
-    //console.log(logmin + ':' + logsec);
+    console.log(logmin + ':' + logsec);*/
 }
 
 function resetClock(){
@@ -222,18 +218,9 @@ function stopTimer(){
         }
         
         times[(taskSetNum - 1) * 7 + parseInt(taskOrder[(taskNum - 1) % 7], 10) - 1] = min + ":" + sec;
-        //console.log((taskSetNum - 1) * 7 + parseInt(taskOrder[(taskNum - 1) % 7], 10) - 1);
-        // window.alert(min + ':' + sec);
         isOnTimer = false;
         isFinishedTask = true;
         resetClock();
-    } else {
-        if (isFinishedTask) {
-            // window.alert("次に進むボタンを押してください．");
-        } else {
-            // window.alert("表示ボタンを押してください．");
-        }
-        
     }
     
 }
@@ -244,29 +231,6 @@ function giveUp(){
 }
 
 function goNextTask(){
-    /*
-    let paramList = new Object;
-    let param = location.search.substring(1).split('&');
-    let paramSplit;
-    for (let i = 0; param[i]; i++) {
-        paramSplit = param[i].split('=');
-        paramList[paramSplit[0]] = paramSplit[1];
-    }
-    if (paramList["taskSet"] == "practice") {
-        paramList["taskSet"] = "control_list";
-        paramList["task"] = "1";
-        paramList["view"] = "false";
-    }
-    
-    param = "";
-    for (key in paramList){
-        param += key + "=" + paramList[key] + "&";
-    }
-    param = param.slice(0, -1);
-    
-    console.log(param);
-    location.search = param;
-    */
     if (showFlg && isFinishedTask && isEnteredID && taskNum < 28) {
         showButton.style.backgroundColor = "";
         showButton.style.color = "";
@@ -319,39 +283,6 @@ function goNextTask(){
         
         document.getElementById("taskSet").innerHTML = (parseInt((taskNum - 1) / 7) + 1) + "セット目";
         document.getElementById("task").innerHTML = "タスク" + (taskNum - parseInt((taskNum - 1) / 7) * 7);
-        
-        /*
-            switch(hl){
-                case "full":
-                    document.getElementById("highlight").innerHTML = "フルハイライト";
-                    break;
-                case "preserved":
-                    document.getElementById("highlight").innerHTML = "予約語";
-                    break;
-                case "gray":
-                    document.getElementById("highlight").innerHTML = "白黒";
-                    break;
-                case "random":
-                    document.getElementById("highlight").innerHTML = "ランダム";
-                    break;
-            }
-        
-            switch(fnt){
-                case "nonPropotional":
-                    document.getElementById("font").innerHTML = "等幅フォント";
-                    break;
-                case "propotional":
-                    document.getElementById("font").innerHTML = "非等幅フォント";
-                    break;
-                case "kawaii":
-                    document.getElementById("font").innerHTML = "Kawaiiフォント";
-                    break;
-            }
-            */
-    } else if (!showFlg){
-        // window.alert("表示ボタンを押してください．");
-    } else if (!isFinishedTask) {
-        // window.alert("現在のタスクを終了してください．");
     } else if(taskNum == 28) {
         window.alert("実験は終了です．お疲れ様でした．")
     }
@@ -370,7 +301,7 @@ function changeFont(){
         code.style.fontFamily = "arial";
     }else if(fnt == "kawaii"){
         // kawaii font
-        code.style.fontFamily = "Mv Boli";
+        code.style.fontFamily = "Segoe Script";
     }
 }
 
