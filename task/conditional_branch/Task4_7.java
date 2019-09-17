@@ -1,34 +1,27 @@
 public static void main(String[] args) {
-  final String input = "3po2pl4mu3mi6d3";
-
-  // split input into one character
+  final String input = "3p2p4m3d3p1";
   final String[] inputArray = input.split("");
-  int ans = Integer.parseInt(input.substring(0, 1));
+
+  // retrieve the first value
+  int answer = Integer.parseInt(input.substring(0, 1));
 
   for (int i = 1; i < inputArray.length; i += 2) {
-    // change the type of calculation depending on the character
-    switch (inputArray[i]) {
+    final String operator = inputArray[i];
+    final int secondValue = Integer.parseInt(inputArray[i + 1]);
+
+    // change the calculation operation based on the character
+    switch (operator) {
       case "p":
-        if (inputArray[i + 1].equals("l")) {
-          ans += Integer.parseInt(inputArray[i + 2]);
-        } else {
-          ans = (int) Math.pow((double) ans, Double.parseDouble(inputArray[i + 2]));
-        }
-        i++;
+        answer += secondValue;
         break;
       case "m":
-        if (inputArray[i + 1].equals("i")) {
-          ans -= Integer.parseInt(inputArray[i + 2]);
-        } else {
-          ans *= Integer.parseInt(inputArray[i + 2]);
-        }
-        i++;
+        answer -= secondValue;
         break;
       case "d":
-        ans /= Integer.parseInt(inputArray[i + 1]);
+        answer /= secondValue;
         break;
     }
   }
 
-  System.out.println(ans);
+  System.out.println(answer);
 }

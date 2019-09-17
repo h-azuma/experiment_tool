@@ -7,7 +7,7 @@ public static void main(String[] args) {
   int index = 0;
 
   for (int i = 0; i < str1.length(); i++) {
-    // compare two chars at the same pos (Note that 'A' is smaller than 'B')
+    // compare two characters at the same position (Note that 'A' is smaller than 'B')
     if (str1.charAt(i) > str2.charAt(i)) {
       answer = str1;
       index = i;

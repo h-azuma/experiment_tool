@@ -1,35 +1,35 @@
 public static void main(String[] args) {
-  final String day = "sat";
-  List<Integer> candidate = new ArrayList<>();
+  final String week = "Sat";
+  int firstDay = 1;
 
-  // 1st is Wednesday
-  int start = 1;
-  switch (day) {
-    case "mon":
-      start += 5;
+  switch (week) {
+    case "Mon":
+      firstDay += 5;
       break;
-    case "tue":
-      start += 6;
+    case "Tue":
+      firstDay += 6;
       break;
-    case "wed":
-      // do nothing
+    case "Wed":
+      // 1st is Wednesday
       break;
-    case "thu":
-      start++;
+    case "Thu":
+      firstDay++;
       break;
-    case "fri":
-      start += 2;
+    case "Fri":
+      firstDay += 2;
       break;
-    case "sat":
-      start += 3;
+    case "Sat":
+      firstDay += 3;
       break;
-    case "sun":
-      start += 4;
+    case "Sun":
+      firstDay += 4;
       break;
   }
 
-  for (int i = start; i <= 31; i += 7) {
+  List<Integer> candidate = new ArrayList<>();
+  for (int i = firstDay; i <= 31; i += 7) {
     candidate.add(i);
   }
-  System.out.println(candidate.get(candidate.size() - 2));
+
+  System.out.println(candidate.get(candidate.size() - 1));
 }

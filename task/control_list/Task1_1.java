@@ -13,7 +13,6 @@ public static void main(String[] args) {
     } else if (num > second && num < max) {
       second = num;
     }
-
   }
 
   System.out.println(second);

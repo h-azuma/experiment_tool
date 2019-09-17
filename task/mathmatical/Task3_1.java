@@ -1,25 +1,19 @@
 public static void main(String[] args) {
-  // followings are initial numbers
+  // initial numbers
   int a1 = 0;
   int a2 = 0;
   int a3 = 1;
 
-  // tmp is a temporary variable
-  int tmp;
-  int an = 0;
+  int sum = 0;
 
-  for (int i = 0; i < 5; i++) {
-    tmp = a1 + a2 + a3;
+  for (int i = 0; sum < 10; i++) {
+    sum = a1 + a2 + a3;
 
-    if (i + 1 == 5) {
-      an = tmp;
-      break;
-    }
-
+    // swap variables
     a1 = a2;
     a2 = a3;
-    a3 = tmp;
+    a3 = sum;
   }
 
-  System.out.println(an);
+  System.out.println(sum);
 }

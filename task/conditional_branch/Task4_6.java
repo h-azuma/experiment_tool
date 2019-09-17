@@ -1,32 +1,29 @@
 public static void main(String[] args) {
-  int input = 130211;
-  List<Integer> digit = new ArrayList<>();
-  for (int i = 100000; i > 0; i /= 10) {
-    digit.add(input / i);
-    input %= i;
-  }
+  final List<Integer> numbers = Arrays.asList(1, 3, 0, 1, 1);
 
-  List<String> bin = new ArrayList<>();
-  for (int i = 0; i < digit.size(); i++) {
-    switch (digit.get(i)) {
+  List<String> binaries = new ArrayList<>();
+  for (int number : numbers) {
+    // convert each numbers into binary
+    switch (number) {
       case 0:
-        bin.add("00");
+        binaries.add("00");
         break;
       case 1:
-        bin.add("01");
+        binaries.add("01");
         break;
       case 2:
-        bin.add("10");
+        binaries.add("10");
         break;
       case 3:
-        bin.add("11");
+        binaries.add("11");
         break;
     }
   }
 
-  String output = "";
-  for (int i = 0; i < bin.size(); i += 2) {
-    output += Integer.parseInt(bin.get(i) + bin.get(i + 1), 2);
+  int output = 0;
+  for (String binary : binaries) {
+    // summing up bins as decimal
+    output += Integer.parseInt(binary);
   }
 
   System.out.println(output);

@@ -1,28 +1,28 @@
 public static void main(String[] args) {
   // input current time and season
   final String time = "0628PM";
-  final String season = "su";
+  final String season = "summer";
 
   int hour = Integer.parseInt(time.substring(0, 2));
+  int dayThreshold = 0;
+  int nightThreshold = 0;
 
   // change hour into 24-hour clock
   if (time.charAt(4) == 'P') {
     hour += 12;
   }
 
-  int dayThreshold = 0;
-  int nightThreshold = 0;
   switch (season) {
-    case "sp":
-    case "au":
+    case "spring":
+    case "autumn":
       dayThreshold = 6;
       nightThreshold = 18;
       break;
-    case "su":
+    case "summer":
       dayThreshold = 5;
       nightThreshold = 19;
       break;
-    case "wi":
+    case "winter":
       dayThreshold = 7;
       nightThreshold = 17;
       break;

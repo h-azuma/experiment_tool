@@ -4,7 +4,7 @@ public static void main(String[] args) {
   int n = 0;
 
   for (int i = 0; i < list.size(); i++) {
-    // split a string into single chars array
+    // split a string into single characters array
     final String[] strArray = list.get(i).split("");
 
     for (String character : strArray) {

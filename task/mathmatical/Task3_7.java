@@ -1,20 +1,26 @@
 public static void main(String[] args) {
-  // 0 <= x, y, z <= max
-  final int max = 2;
+  final int a = 90;
+  final int b = 50;
+  final int base = 7;
 
-  // x + y + z = sum
-  final int sum = 2;
   int count = 0;
+  int start, end;
 
-  for (int x = 0; x <= max; x++) {
-    for (int y = 0; y <= max; y++) {
-      int z = sum - x - y;
-      if (0 <= z && z <= max) {
-        count++;
-      } else if (z < 0) {
-        break;
-      }
+  // set "start" and "end"
+  if (a > b) {
+    start = b;
+    end = a;
+  } else {
+    start = a;
+    end = b;
+  }
+
+  for (int i = start; i < end; i++) {
+    // count multiples of 7 between start and end
+    if (i % base == 0) {
+      count++;
     }
   }
+
   System.out.println(count);
 }
