@@ -24,26 +24,20 @@ window.onload = function() {
     stopButton = document.getElementById("stopButton");
     giveUpButton = document.getElementById("giveUpButton");
     finishButton = document.getElementById("finishButton");
-    showButton.style.backgroundColor = "white";
-    showButton.style.color = "white";
-    nextButton.style.backgroundColor = "white";
-    nextButton.style.color = "white";
-    stopButton.style.backgroundColor = "white";
-    stopButton.style.color = "white";
-    giveUpButton.style.backgroundColor = "white";
-    giveUpButton.style.color = "white";
     finishLink.style.color = "white";
 }
 
 function getID() {
     ID = document.forms.input.inputForm.value;
     if (ID > -1 && ID < 21 && !isEnteredID) {
-        nextButton.style.backgroundColor = "";
-        nextButton.style.color = "";
+        nextButton.style.display = "inline";
         finishLink.style.color = "";
         
         getOrder();
-        getStatusOrder();
+        getStatusOrder(1);
+        getStatusOrder(2);
+        getStatusOrder(3);
+        getStatusOrder(4);
         
         isEnteredID = true;
     } else if (isEnteredID) {
@@ -73,52 +67,16 @@ function getOrder() {
     }
 }
 
-function getStatusOrder() {
+function getStatusOrder(i) {
     let req1 = new XMLHttpRequest();
-    req1.open("get", "square/status1.csv", true);
+    req1.open("get", "square/status" + i + ".csv", true);
     req1.send(null);
 	
     req1.onload = function(){
         let tmp1 = req1.responseText.split("\n");
         let tmp2 = tmp1[ID].split(',');
         for (let j = 0; j < tmp2.length; j++) {
-                statusOrder[0 * 7 + j] = tmp2[j];
-        }
-    }
-    
-    let req2 = new XMLHttpRequest();
-    req2.open("get", "square/status2.csv", true);
-    req2.send(null);
-	
-    req2.onload = function(){
-        let tmp1 = req2.responseText.split("\n");
-        let tmp2 = tmp1[ID].split(',');
-        for (let j = 0; j < tmp2.length; j++) {
-                statusOrder[1 * 7 + j] = tmp2[j];
-        }
-    }
-    
-    let req3 = new XMLHttpRequest();
-    req3.open("get", "square/status3.csv", true);
-    req3.send(null);
-	
-    req3.onload = function(){
-        let tmp1 = req1.responseText.split("\n");
-        let tmp2 = tmp1[ID].split(',');
-        for (let j = 0; j < tmp2.length; j++) {
-                statusOrder[2 * 7 + j] = tmp2[j];
-        }
-    }
-    
-    let req4 = new XMLHttpRequest();
-    req4.open("get", "square/status4.csv", true);
-    req4.send(null);
-	
-    req4.onload = function(){
-        let tmp1 = req1.responseText.split("\n");
-        let tmp2 = tmp1[ID].split(',');
-        for (let j = 0; j < tmp2.length; j++) {
-                statusOrder[3 * 7 + j] = tmp2[j];
+                statusOrder[(i - 1) * 7 + j] = tmp2[j];
         }
     }
 }
@@ -131,14 +89,10 @@ function deleteCode() {
 
 function getCode(){
     if (!isOnTimer && !isFinishedTask) {
-        showButton.style.backgroundColor = "white";
-        showButton.style.color = "white";
-        nextButton.style.backgroundColor = "white";
-        nextButton.style.color = "white";
-        stopButton.style.backgroundColor = "";
-        stopButton.style.color = "";
-        giveUpButton.style.backgroundColor = "";
-        giveUpButton.style.color = "";
+        showButton.style.display = "none";
+        nextButton.style.display = "none";
+        stopButton.style.display = "inline";
+        giveUpButton.style.display = "inline";
         
         if(taskSetNum == 1){
             taskSet = "control_list";
@@ -199,14 +153,10 @@ function resetClock(){
 
 function stopTimer(){
     if (isOnTimer) {
-        showButton.style.backgroundColor = "white";
-        showButton.style.color = "white";
-        nextButton.style.backgroundColor = "";
-        nextButton.style.color = "";
-        stopButton.style.backgroundColor = "white";
-        stopButton.style.color = "white";
-        giveUpButton.style.backgroundColor = "white";
-        giveUpButton.style.color = "white";
+        showButton.style.display = "none";
+        nextButton.style.display = "inline";
+        stopButton.style.display = "none";
+        giveUpButton.style.display = "none";
         
         window.clearInterval(timer);
         if(min < 10){
@@ -232,14 +182,10 @@ function giveUp(){
 
 function goNextTask(){
     if (showFlg && isFinishedTask && isEnteredID && taskNum < 28) {
-        showButton.style.backgroundColor = "";
-        showButton.style.color = "";
-        nextButton.style.backgroundColor = "white";
-        nextButton.style.color = "white";
-        stopButton.style.backgroundColor = "white";
-        stopButton.style.color = "white";
-        giveUpButton.style.backgroundColor = "white";
-        giveUpButton.style.color = "white";
+        showButton.style.display = "inline";
+        nextButton.style.display = "none";
+        stopButton.style.display = "none";
+        giveUpButton.style.display = "none";
         
         deleteCode();
         isFinishedTask = false;
@@ -247,7 +193,7 @@ function goNextTask(){
         taskNum++;
         document.getElementById("presentTask").innerHTML = taskNum;
         
-        switch(statusOrder[taskNum]){
+        switch(statusOrder[taskNum - 1]){
             case "1":
                 hl = "full";
                 fnt = "nonPropotional";
@@ -272,7 +218,7 @@ function goNextTask(){
                 hl = "preserved";
                 fnt = "kawaii";
                 break;
-            case "7":
+            default:
                 hl = "random";
                 fnt = "kawaii";
                 break;
@@ -354,7 +300,7 @@ function finish() {
     
     let blob = new Blob([ content ], { "type" : "text/csv" });
     
-    document.getElementById("finishLink").download = ID + ".csv";
+    document.getElementById("finishLink").download = "ID" + ID + "_result.csv";
     
     document.getElementById("finishLink").href = window.URL.createObjectURL(blob);
 }
