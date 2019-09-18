@@ -10,11 +10,12 @@ let isFinishedTask = true;
 let isEnteredID = false;
 let ID;
 let times = new Array(28);
-let taskSetNum;
-let taskNum = 0;
+let taskSetNum; // taskSetの番号(呼び出すフォルダを管理する)
+let taskNum = 0;　// 現在のtask番号を保持
 let taskSetOrder = new Array(4);
 let taskOrder = new Array(7);
 let statusOrder = new Array(28);
+let practice = 0;
 //let setParam = "?taskSet=practice&task=practice&hl=full&font=nonPropotional&view=true";
 //location.search = setParam;
 
@@ -40,6 +41,7 @@ function getID() {
         getStatusOrder(4);
         
         isEnteredID = true;
+        document.getElementById("preview").innerHTML = "";
     } else if (isEnteredID) {
         window.alert("IDはすでに入力されています．");
     } else {
@@ -103,10 +105,10 @@ function getCode(){
         }else if(taskSetNum == 4){
             taskSet = "conditional_branch";
         }
-
-        let filePath = "task/" + taskSet + "/Task" + taskSetNum + "_" + taskOrder[(taskNum - 1) % 7] + ".java";
-    
-        if(!showFlg){
+        
+        if (practice < 3) {
+            let filePath = "task/practice/Practice" + practice + ".java";
+            if(!showFlg){
             console.log("Timer Start")
             timer = setInterval('startClock()',1000);
             showFlg = true;
@@ -117,6 +119,21 @@ function getCode(){
             .then((text) => changeHighlight(text))
             .then(() => changeFont())
             .catch((error) => console.log(error));
+        }
+        } else {
+            let filePath = "task/" + taskSet + "/Task" + taskSetNum + "_" + taskOrder[(taskNum - 1) % 7] + ".java";
+            if(!showFlg){
+            console.log("Timer Start")
+            timer = setInterval('startClock()',1000);
+            showFlg = true;
+            isOnTimer = true;
+            // console.log(filePath);
+            fetch(filePath)
+            .then((response) => response.text())
+            .then((text) => changeHighlight(text))
+            .then(() => changeFont())
+            .catch((error) => console.log(error));
+        }
         }
     }
 }
@@ -167,6 +184,10 @@ function stopTimer(){
             sec = '0' + sec;
         }
         
+        if (practice == 2) {
+            practice++;
+        }
+        
         times[(taskSetNum - 1) * 7 + parseInt(taskOrder[(taskNum - 1) % 7], 10) - 1] = min + ":" + sec;
         isOnTimer = false;
         isFinishedTask = true;
@@ -190,7 +211,12 @@ function goNextTask(){
         deleteCode();
         isFinishedTask = false;
         
-        taskNum++;
+        if (practice < 2) {
+            practice++;
+        } else {
+            taskNum++;
+        }
+        
         document.getElementById("presentTask").innerHTML = taskNum;
         
         switch(statusOrder[taskNum - 1]){
@@ -224,11 +250,25 @@ function goNextTask(){
                 break;
         }
         
-        taskSetNum = parseInt(taskSetOrder[parseInt((taskNum - 1) / 7)], 10);
-        //console.log(taskSetNum);
+        if (practice == 1) {
+            hl = "full";
+            fnt = "nonPropotional";
+        } else if (practice == 2) {
+            hl = "random";
+            fnt = "kawaii";
+        }
         
-        document.getElementById("taskSet").innerHTML = (parseInt((taskNum - 1) / 7) + 1) + "セット目";
-        document.getElementById("task").innerHTML = "タスク" + (taskNum - parseInt((taskNum - 1) / 7) * 7);
+        if (practice < 3) {
+            document.getElementById("taskSet").innerHTML = "練習セット"
+            document.getElementById("task").innerHTML = "練習タスク" + practice;
+        } else {
+            taskSetNum = parseInt(taskSetOrder[parseInt((taskNum - 1) / 7)], 10);
+            //console.log(taskSetNum);
+        
+            document.getElementById("taskSet").innerHTML = (parseInt((taskNum - 1) / 7) + 1) + "セット目";
+            document.getElementById("task").innerHTML = "タスク" + (taskNum - parseInt((taskNum - 1) / 7) * 7);
+        }
+        
     } else if(taskNum == 28) {
         window.alert("実験は終了です．お疲れ様でした．")
     }
