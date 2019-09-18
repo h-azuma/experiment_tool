@@ -3,16 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="95696c98-07fe-474a-90b1-fffcdf7f605c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_redirect.html" beforeDir="false" afterPath="$PROJECT_DIR$/_redirect.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/default.css" beforeDir="false" afterPath="$PROJECT_DIR$/default.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/function.js" beforeDir="false" afterPath="$PROJECT_DIR$/function.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/square/status1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/square/status2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/square/status3.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/square/status4.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/mathmatical/Task3_1.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/mathmatical/Task3_1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/practice/Practice1.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/practice/Task0_1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/task/practice/Practice2.java" beforeDir="false" afterPath="$PROJECT_DIR$/task/practice/Task0_2.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,7 +70,7 @@
       <workItem from="1567678160139" duration="5000" />
       <workItem from="1568765967385" duration="58000" />
       <workItem from="1568780617369" duration="890000" />
-      <workItem from="1568786101746" duration="5590000" />
+      <workItem from="1568786101746" duration="6307000" />
     </task>
     <servers />
   </component>

@@ -121,11 +121,17 @@ function changeHighlight(text) {
     if (hl == "full") {
         // full highlight
         document.getElementById("style").href = "lib/styles/vs.css";
-        document.getElementById("preview").innerHTML = hljs.highlight("java", text).value;
+        setTimeout(
+            () => {
+                document.getElementById("preview").innerHTML = hljs.highlight("java", text).value;
+            }, 500)
     } else if (hl == "preserved") {
         // preserved word highlight
         document.getElementById("style").href = "lib/styles/ascetic.css";
-        document.getElementById("preview").innerHTML = hljs.highlight("java", text).value;
+        setTimeout(
+            () => {
+                document.getElementById("preview").innerHTML = hljs.highlight("java", text).value;
+            }, 500)
     } else if (hl == "gray") {
         // gray
         document.getElementById("preview").innerHTML = text;
