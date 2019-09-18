@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>_redirect</title>
+</head>
+<body>
+
+</body>
+<script>
+    parseUrlParam = () => {
+        const url = window.location.search.substring(1);
+        let params = [];
+        const _params = url.split('&');
+        for (let i = 0; i < _params.length; i++) {
+            let kv = _params[i].split('=');
+            params[kv[0]] = kv[1];
+        }
+        return params
+    };
+
+    doRedirect = (uid, next) => {
+        const promises = [];
+        promises.push(getPromise('square/taskSet.csv', uid, parseInt(next)/7));
+        promises.push(getPromise('square/taskNumber.csv', uid, parseInt(next)%7));
+        promises.push(getPromise('square/status1.csv', uid, parseInt(next)%7));  // TODO status4?
+
+        Promise.all(promises).then((values) => {
+            //console.log(values)
+            window.location.href = '/?' +
+                'taskset=' + values[0] +
+                '&tasknum=' + values[1] +
+                '&status=' + values[2] +
+                '&__uid=' + uid +
+                '&__next=' + ++next;
+        })
+    };
+
+    getPromise = (uri, uid, next) => {
+        next = parseInt(next);
+        return fetch(uri)
+            .then(response => {
+                return response.text()
+            })
+            .then(text => {
+                const tmp = text.split('\n')[uid];
+                return tmp.split(',')[next];
+            });
+    };
+
+    const params = parseUrlParam();
+    doRedirect(params['uid'], params['next']);
+
+</script>
+</html>
