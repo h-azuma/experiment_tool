@@ -18,12 +18,18 @@ window.onload = function () {
         return params
     };
     const params = parseUrlParam();
-    console.log(params);
+    //console.log(params);
 
     if (params['__uid'] != undefined) {
         taskSetNum = params['taskset'];
         taskNum = params['tasknum'];
         status = params['status'];
+
+        if (parseInt(params['__next'], 2) <= 0) {
+            document.getElementById('num').innerHTML = '練習' + (parseInt(params['__next'], 2) + 2);
+        } else {
+            document.getElementById('num').innerHTML = params['__next'];
+        }
 
         switchStatus();
 
@@ -31,7 +37,7 @@ window.onload = function () {
         const button = document.getElementById('nextButton')
         button.addEventListener('click', () => {
             if (params['__next'] != "28") {
-                location.href = '/_redirect.html' +
+                location.href = '/~h-azuma/_redirect.html' +
                     '?uid=' + params['__uid'] +
                     '&next=' + params['__next'];
             } else {
