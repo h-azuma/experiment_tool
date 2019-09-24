@@ -4,6 +4,34 @@ let fnt = "nonPropotional";
 let taskSetNum; // taskSetの番号(呼び出すフォルダを管理する)
 let taskNum = 0;　// 現在のtask番号を保持
 let status = 0;
+let colors = ['ff0000', 'ff00ff', '008000', '32cd32', '0000ff', '00bfff'];
+let seed = 1;
+
+class Random {
+    constructor(seed = 88675123) {
+        this.x = 123456789;
+        this.y = 362436069;
+        this.z = 521288629;
+        this.w = seed;
+    }
+
+    // XorShift
+    next() {
+        let t;
+
+        t = this.x ^ (this.x << 11);
+        this.x = this.y; this.y = this.z; this.z = this.w;
+        return this.w = (this.w ^ (this.w >>> 19)) ^ (t ^ (t >>> 8));
+    }
+
+    // min以上max以下の乱数を生成する
+    nextInt(min, max) {
+        const r = Math.abs(this.next());
+        return min + (r % (max + 1 - min));
+    }
+}
+
+let random = new Random(seed);
 
 window.onload = function () {
     parseUrlParam = () => {
@@ -24,6 +52,8 @@ window.onload = function () {
         taskSetNum = params['taskset'];
         taskNum = params['tasknum'];
         status = params['status'];
+        seed = parseInt(params['taskSet'], 2) + parseInt(params['tasknum'], 2);
+        random = new Random(seed);
 
         if (parseInt(params['__next'], 2) <= 0) {
             document.getElementById('num').innerHTML = '練習' + (parseInt(params['__next'], 2) + 2);
@@ -153,11 +183,10 @@ function changeHighlight(text) {
 }
 
 function createRandomColorValue() {
-    let colorValue = "";
+    let colorValue = '';
 
-    for (let i = 0; i < 3; i++) {
-        var rand = Math.floor(Math.random() * 128);
-        colorValue += rand.toString(16);
-    }
+    let value = random.nextInt(0, 5);
+    colorValue = colors[value];
+
     return colorValue;
 }
